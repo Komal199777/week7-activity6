@@ -1,10 +1,10 @@
-<!-- Define a function to render each goal -->
-<% function renderGoal(goal) { %>
+<!-- Define a function to render each message -->
+<% function renderMessage(message) { %>
     <li>
-      <strong>Title:</strong> <%= goal.title %><br />
-      <strong>Description:</strong> <%= goal.description %><br />
-      <strong>Target Date:</strong> <%= goal.targetDate %><br />
-      <strong>Achieved:</strong> <%= goal.achieved %>
+      <strong>Title:</strong> <%= message.title %><br />
+      <strong>Description:</strong> <%= message.description %><br />
+      <strong>Target Date:</strong> <%= message.targetDate %><br />
+      <strong>Achieved:</strong> <%= message.achieved %>
     </li>
     <% } %>
     
@@ -13,15 +13,15 @@
       <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Goals</title>
+        <title>Messages</title>
       </head>
       <body>
-        <h1>Goals List</h1>
+        <h1>Messages List</h1>
         <ul>
-          <% if (goals.length > 0) { %>
-          <!-- Call the renderGoal function for each goal -->
-          <% goals.forEach(renderGoal); %> <% } else { %>
-          <li>No goals found.</li>
+          <% if (messages.length > 0) { %>
+          <!-- Call the renderGoal function for each message -->
+          <% messages.forEach(renderMessage); %> <% } else { %>
+          <li>No messages found.</li>
           <% } %>
         </ul>
       </body>

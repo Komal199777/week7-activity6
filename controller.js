@@ -1,43 +1,43 @@
-const Goal = require("./model");
+const Message = require("./model");
 
-// Render Controller: Render index.html with goals using EJS
-const renderGoals = async (req, res) => {
+// Render Controller: Render index.html with messages using EJS
+const renderMessages = async (req, res) => {
   try {
-    const goals = await Goal.find({});
-    res.render("../views/index", { goals }); // Render index.ejs with goals data
+    const messages = await Message.find({});
+    res.render("../views/index", { messages }); // Render index.ejs with messages data
   } catch (error) {
     console.error("Error rendering index.html:", error);
     res.status(500).send("Internal Server Error");
   }
 };
 
-// get all Goals
-const getGoals = async (req, res) => {
+// get all Messages
+const getMessages = async (req, res) => {
   try {
-    const goals = await Goal.find({});
-    res.status(200).json(goals);
+    const messages = await Message.find({});
+    res.status(200).json(messages);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
-// Add one Goal
-const addGoal = async (req, res) => {
+// Add one Message
+const addMessage = async (req, res) => {
   try {
     const { title, description, targetDate, achieved } = req.body;
-    const newGoal = new Goal({ title, description, targetDate, achieved });
-    await newGoal.save();
-    res.status(201).json(newGoal);
+    const newMessage = new Message({ title, description, targetDate, achieved });
+    await newMessage.save();
+    res.status(201).json(newMessage);
   } catch (error) {
     console.error("Error:", error.message);
     res.status(500).json({ message: "try again later" });
   }
 };
 
-// Delete all Goals
-const deleteAllGoals = async (req, res) => {
+// Delete all Messages
+const deleteAllMessages = async (req, res) => {
   try {
-    const result = await Goal.deleteMany({});
+    const result = await Message.deleteMany({});
     res
       .status(200)
       .json({ message: `Deleted ${result.deletedCount} books successfully` });
@@ -48,8 +48,8 @@ const deleteAllGoals = async (req, res) => {
 };
 
 module.exports = {
-  getGoals,
-  renderGoals,
-  addGoal,
-  deleteAllGoals,
+  getMessages,
+  renderMessages,
+  addMessage,
+  deleteAllMessages,
 };
